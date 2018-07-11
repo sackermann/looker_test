@@ -100,11 +100,11 @@ view: channel_daily {
  dimension: created_year_only {
     hidden: no
     type: number
-    sql: DATE_PART(year, ${TABLE}."DATE")
+    sql: DATE_PART(year, ${TABLE}."DATE");;
   }
 
   dimension: created_date_only {
-    sql: to_char( ${TABLE}."DATE", 'MM-DD' )
+    sql: to_char( ${TABLE}."DATE", 'MM-DD' );;
 }
 
   measure: count {
