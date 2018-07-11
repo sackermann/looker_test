@@ -97,15 +97,16 @@ view: channel_daily {
     sql: ${TABLE}."RESOLUTION" ;;
   }
 
- dimension: created_year_only {
-    hidden: no
-    type: number
-    sql: DATE_PART(year, ${TABLE}."DATE");;
+  dimension_group: created {
+    type: time
+    timeframes: [date, year]
+    sql: ${TABLE}.created ;;
   }
 
-  dimension: created_date_only {
-    sql: to_char( ${TABLE}."DATE", 'MM-DD' );;
-}
+  dimension: until_this_week {
+    type: yesno
+    sql: ${TABLE}."DATE" <= WEEK(NOW()) AND ${TABLE}."DATE" >= 0 ;;
+  }
 
   measure: count {
     type: count
