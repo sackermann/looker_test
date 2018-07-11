@@ -1,32 +1,33 @@
 view: channel_daily {
   sql_table_name: PUBLIC.CHANNEL_DAILY ;;
 
-  dimension: c1 {
+  dimension: channel_name {
+    type: string
+    sql: ${TABLE}."CHANNEL_NAME" ;;
+  }
+
+  dimension: channelgenre {
+    type: string
+    sql: ${TABLE}."CHANNELGENRE" ;;
+  }
+
+  dimension: channellongname {
+    type: string
+    sql: ${TABLE}."CHANNELLONGNAME" ;;
+  }
+
+  dimension: channelobjid {
     type: number
-    sql: ${TABLE}."C1" ;;
+    value_format_name: id
+    sql: ${TABLE}."CHANNELOBJID" ;;
   }
 
-  dimension: c10 {
+  dimension: channelshortname {
     type: string
-    sql: ${TABLE}."C10" ;;
+    sql: ${TABLE}."CHANNELSHORTNAME" ;;
   }
 
-  dimension: c11 {
-    type: string
-    sql: ${TABLE}."C11" ;;
-  }
-
-  dimension: c12 {
-    type: string
-    sql: ${TABLE}."C12" ;;
-  }
-
-  dimension: c13 {
-    type: string
-    sql: ${TABLE}."C13" ;;
-  }
-
-  dimension_group: c14 {
+  dimension_group: date {
     type: time
     timeframes: [
       raw,
@@ -38,56 +39,71 @@ view: channel_daily {
     ]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}."C14" ;;
+    sql: ${TABLE}."DATE" ;;
   }
 
-  dimension: c15 {
+  dimension: dma_cd {
+    type: string
+    sql: ${TABLE}."DMA_CD" ;;
+  }
+
+  dimension: finalchannelname {
+    type: string
+    sql: ${TABLE}."FINALCHANNELNAME" ;;
+  }
+
+  dimension: hhcount {
     type: number
-    sql: ${TABLE}."C15" ;;
+    sql: ${TABLE}."HHCOUNT" ;;
   }
 
-  dimension: c2 {
+  dimension: local_chang_flg {
     type: string
-    sql: ${TABLE}."C2" ;;
+    sql: ${TABLE}."LOCAL_CHANG_FLG" ;;
   }
 
-  dimension: c3 {
+  dimension: majorchannel {
     type: string
-    sql: ${TABLE}."C3" ;;
+    sql: ${TABLE}."MAJORCHANNEL" ;;
   }
 
-  dimension: c4 {
+  dimension: minorchannel {
     type: string
-    sql: ${TABLE}."C4" ;;
+    sql: ${TABLE}."MINORCHANNEL" ;;
   }
 
-  dimension: c5 {
-    type: number
-    sql: ${TABLE}."C5" ;;
-  }
-
-  dimension: c6 {
+  dimension: platform {
     type: string
-    sql: ${TABLE}."C6" ;;
+    sql: ${TABLE}."PLATFORM" ;;
   }
 
-  dimension: c7 {
+  dimension: playbacktype {
     type: string
-    sql: ${TABLE}."C7" ;;
+    sql: ${TABLE}."PLAYBACKTYPE" ;;
   }
 
-  dimension: c8 {
+  dimension: premiumsuite {
     type: string
-    sql: ${TABLE}."C8" ;;
+    sql: ${TABLE}."PREMIUMSUITE" ;;
   }
 
-  dimension: c9 {
+  dimension: region {
     type: string
-    sql: ${TABLE}."C9" ;;
+    sql: ${TABLE}."REGION" ;;
+  }
+
+  dimension: resolution {
+    type: string
+    sql: ${TABLE}."RESOLUTION" ;;
   }
 
   measure: count {
     type: count
     drill_fields: []
+  }
+
+  measure: total_households {
+    type: sum
+    sql: ${hhcount} ;;
   }
 }
