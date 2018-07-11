@@ -99,7 +99,7 @@ view: channel_daily {
 
   dimension: created_year_only {
     hidden: no
-    type: date_year
+    type: number
     sql: DATE_PART(year, ${TABLE}."DATE");;
   }
 
