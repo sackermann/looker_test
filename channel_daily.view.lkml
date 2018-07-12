@@ -105,7 +105,7 @@ view: channel_daily {
 
   dimension: until_this_day {
     type: yesno
-    sql: ${created_day_of_year} <= CURRENT_DATE() AND ${created_day_of_year} >= 0 ;;
+    sql: ${created_day_of_year} <= DAYOFYEAR(current_date) AND ${created_day_of_year} >= 0 ;;
   }
 
   measure: count {
