@@ -100,7 +100,7 @@ view: channel_daily {
   dimension_group: created {
     type: time
     timeframes: [date, month, day_of_week, day_of_week_index, day_of_year, year]
-    sql: ${TABLE}.created ;;
+    sql: ${TABLE}."DATE" ;;
   }
 
   dimension: until_this_day {
