@@ -20,7 +20,6 @@ explore: channel_daily_trunc{}
 
 # ALL OF THE SNOWFLAKE PERFORMANCE VIEWS
 explore: columns{}
-explore: databases{}
 explore: load_history{}
 explore: table_storage_metrics{}
 explore: tables{}
