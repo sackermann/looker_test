@@ -1,9 +1,15 @@
 view: databases {
   sql_table_name: INFORMATION_SCHEMA.DATABASES ;;
 
+  dimension: id {
+    primary_key: yes
+    type: number
+    sql: ${TABLE}.ID ;;
+  }
+
   dimension: comment {
     type: string
-    sql: ${TABLE}."COMMENT" ;;
+    sql: ${TABLE}.COMMENT ;;
   }
 
   dimension_group: created {
@@ -17,22 +23,36 @@ view: databases {
       quarter,
       year
     ]
-    sql: ${TABLE}."CREATED" ;;
+    sql: ${TABLE}.CREATED ;;
   }
 
   dimension: database_name {
     type: string
-    sql: ${TABLE}."DATABASE_NAME" ;;
+    sql: ${TABLE}.DATABASE_NAME ;;
   }
 
   dimension: database_owner {
     type: string
-    sql: ${TABLE}."DATABASE_OWNER" ;;
+    sql: ${TABLE}.DATABASE_OWNER ;;
+  }
+
+  dimension_group: deleted {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.DELETED ;;
   }
 
   dimension: is_transient {
-    type: string
-    sql: ${TABLE}."IS_TRANSIENT" ;;
+    type: yesno
+    sql: ${TABLE}.IS_TRANSIENT ;;
   }
 
   dimension_group: last_altered {
@@ -46,16 +66,11 @@ view: databases {
       quarter,
       year
     ]
-    sql: ${TABLE}."LAST_ALTERED" ;;
-  }
-
-  dimension: retention_time {
-    type: number
-    sql: ${TABLE}."RETENTION_TIME" ;;
+    sql: ${TABLE}.LAST_ALTERED ;;
   }
 
   measure: count {
     type: count
-    drill_fields: [database_name]
+    drill_fields: [id, database_name, query_history.count, schemata.count]
   }
 }
