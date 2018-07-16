@@ -116,6 +116,6 @@ view: channel_daily {
   measure: total_households {
     type: sum
     sql: ${hhcount} ;;
-    drill_fields: [created_date, created_month, created_year]
+    drill_fields: [ created_month, total_households]
   }
 }
