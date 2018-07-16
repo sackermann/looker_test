@@ -15,11 +15,3 @@ persist_with: snowflake_test_default_datagroup
 
 explore: channel_daily{}
 explore: channel_daily_trunc{}
-
-
-
-# ALL OF THE SNOWFLAKE PERFORMANCE VIEWS
-explore: columns{}
-explore: load_history{}
-explore: table_storage_metrics{}
-explore: tables{}
