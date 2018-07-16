@@ -118,7 +118,7 @@ view: channel_daily_trunc {
   }
 
   measure: avg_hour_per_channel {
-    type: sum
+    type: number
     sql: ${hh_hours}/${hh_count} ;;
     value_format: "0.00%"
   }
@@ -132,7 +132,7 @@ view: channel_daily_trunc {
   dimension_group: created {
     type: time
     timeframes: [date, month, day_of_week, day_of_week_index, day_of_year, year]
-    sql: ${TABLE}."DATE" ;;
+    sql: ${TABLE}."date" ;;
   }
 
   dimension: until_this_day {
