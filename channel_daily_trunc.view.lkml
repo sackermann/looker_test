@@ -109,34 +109,34 @@ view: channel_daily_trunc {
 
   measure: households {
     type: number
-    sql:  ${hh_count} ;;
+    sql: ${TABLE}."hhCount" ;;
   }
 
   measure: hours {
     type: number
-    sql:  ${hh_hours} ;;
+    sql: ${TABLE}."hhHours" ;;
     value_format: "0.##"
   }
 
   measure: total_households {
     type: sum
-    sql: ${hh_count} ;;
+    sql: ${TABLE}."hhCount" ;;
   }
 
   measure: total_hours {
     type: sum
-    sql: ${hh_hours} ;;
+    sql: ${TABLE}."hhHours" ;;
   }
 
   measure: avg_hour_per_channel {
     type: number
-    sql: ${hh_hours}/${hh_count} ;;
+    sql: ${TABLE}."hhHours"/${TABLE}."hhCount" ;;
     value_format: "0.00%"
   }
 
   measure: avg_hours {
     type: average
-    sql: ${hh_hours};;
+    sql: ${TABLE}."hhHours";;
     value_format: "0.00%"
   }
 
