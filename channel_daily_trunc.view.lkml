@@ -107,6 +107,17 @@ view: channel_daily_trunc {
     drill_fields: [channelshortname, channellongname, channel_name, finalchannelname]
   }
 
+  measure: households {
+    type: number
+    sql:  ${hh_count} ;;
+  }
+
+  measure: hours {
+    type: number
+    sql:  ${hh_hours} ;;
+    value_format: "0.##"
+  }
+
   measure: total_households {
     type: sum
     sql: ${hh_count} ;;
