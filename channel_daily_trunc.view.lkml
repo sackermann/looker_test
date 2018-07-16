@@ -137,7 +137,7 @@ view: channel_daily_trunc {
   measure: avg_hours {
     type: average
     sql: ${TABLE}."hhHours";;
-    value_format: "0.00%"
+    value_format: "#,##0.00"
   }
 
   dimension_group: created {
