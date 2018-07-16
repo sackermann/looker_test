@@ -120,6 +120,7 @@ view: channel_daily_trunc {
   measure: avg_hour_per_channel {
     type: sum
     sql: ${hh_hours}/${hh_count} ;;
+    value_format: "0.00%"
   }
 
   measure: avg_hours {
