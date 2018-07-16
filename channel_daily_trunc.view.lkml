@@ -125,6 +125,7 @@ view: channel_daily_trunc {
   measure: avg_hours {
     type: average
     sql: ${hh_hours};;
+    value_format: "0.00%"
   }
 
   dimension_group: created {
