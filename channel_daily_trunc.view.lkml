@@ -121,6 +121,7 @@ view: channel_daily_trunc {
   measure: total_households {
     type: sum
     sql: ${TABLE}."hhCount" ;;
+    drill_fields: [created_month, created_date, created_year, created_day_of_week_index]
   }
 
   measure: total_hours {
