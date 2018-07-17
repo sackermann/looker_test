@@ -118,4 +118,9 @@ view: channel_daily {
     sql: ${hhcount} ;;
     drill_fields: [ created_month, total_households]
   }
+
+  measure: lastest_date {
+    type: date
+    sql: MAX(${TABLE}."DATE" ;;
+  }
 }
