@@ -151,4 +151,9 @@ view: channel_daily_trunc {
     type: yesno
     sql: ${created_day_of_year} <= DAYOFYEAR(current_date) AND ${created_day_of_year} >= 0 ;;
   }
+
+  measure: lastest_date {
+    type: date
+    sql: MAX(${TABLE}."date" ;;
+  }
 }
