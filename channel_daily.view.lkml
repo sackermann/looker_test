@@ -103,9 +103,15 @@ view: channel_daily {
     sql: ${TABLE}."DATE" ;;
   }
 
-  dimension: last_updated_date {
+  dimension_group: updated {
+    type: time
+    timeframes: [time, date, week, month, raw]
+    sql: ${TABLE}.updated_at ;;
+  }
+
+  measure: last_updated_date {
     type: date
-    sql: MAX(${created_date}) ;;
+    sql: MAX(${updated_raw}) ;;
     convert_tz: no
   }
 
