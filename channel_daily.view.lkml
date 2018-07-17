@@ -105,7 +105,7 @@ view: channel_daily {
 
   dimension: last_updated_date {
     type: date
-    sql: MAX(${created_raw}) ;;
+    sql: MAX(${created_date}) ;;
     convert_tz: no
   }
 
