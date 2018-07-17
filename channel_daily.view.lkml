@@ -104,9 +104,8 @@ view: channel_daily {
   }
 
   measure: lastest_date {
-    type: date
-    sql: ${created_raw} == MAX(${created_date};;
-    convert_tz: no
+    type: time
+    sql: MAX(${TABLE}."DATE");;
   }
 
   dimension: until_this_day {
