@@ -106,7 +106,7 @@ view: channel_daily {
   dimension_group: updated {
     type: time
     timeframes: [time, date, week, month, raw]
-    sql: ${TABLE}.updated_at ;;
+    sql: ${TABLE}."DATE" ;;
   }
 
   measure: last_updated_date {
