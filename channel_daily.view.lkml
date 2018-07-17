@@ -99,8 +99,14 @@ view: channel_daily {
 
   dimension_group: created {
     type: time
-    timeframes: [date, month, day_of_week, day_of_week_index, day_of_year, year]
+    timeframes: [date, month, day_of_week, day_of_week_index, day_of_year, year, raw]
     sql: ${TABLE}."DATE" ;;
+  }
+
+  measure: lastest_date {
+    type: date
+    sql: MAX(${created_raw};;
+    convert_tz: no
   }
 
   dimension: until_this_day {
@@ -119,9 +125,4 @@ view: channel_daily {
     drill_fields: [ created_month, total_households]
   }
 
-  measure: lastest_date {
-    type: date
-    sql: MAX(${created_date};;
-    convert_tz: no
-  }
 }
